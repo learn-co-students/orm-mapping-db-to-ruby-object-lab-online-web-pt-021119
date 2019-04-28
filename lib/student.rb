@@ -37,10 +37,10 @@ class Student
     sql = <<-SQL
       SELECT *
       FROM students
-      WHERE NOT grade = 12
+      WHERE grade < 12
     SQL
     DB[:conn].execute(sql).map do |row|
-      row[1]
+      new_from_db(row)
     end
   end
 
